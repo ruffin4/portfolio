@@ -85,7 +85,7 @@ export function Contact() {
                 >
                   <motion.div
                     whileHover={{ scale: 1.15, backgroundColor: 'rgba(5,211,248,0.2)' }}
-                    transition={{ type: 'spring', stiffness: 300 }}
+                    transition={{ type: 'spring' as const, stiffness: 300 }}
                     className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5 transition-colors"
                   >
                     <item.icon size={16} />
@@ -118,7 +118,7 @@ export function Contact() {
                   rel="noreferrer"
                   whileHover={{ y: -3, scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
-                  transition={{ type: 'spring', stiffness: 400 }}
+                  transition={{ type: 'spring' as const, stiffness: 400 }}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors"
                 >
                   <Icon size={15} /> {label}
@@ -140,7 +140,7 @@ export function Contact() {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+                  transition={{ type: 'spring' as const, stiffness: 300 }}
                   className="flex flex-col items-center justify-center py-12 gap-4 text-center"
                 >
                   <motion.div
@@ -232,7 +232,7 @@ export function Contact() {
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
-                    transition={{ type: 'spring', stiffness: 400 }}
+                    transition={{ type: 'spring' as const, stiffness: 400 }}
                     className="w-full rounded-lg bg-primary text-background font-semibold py-3 text-sm hover:opacity-90 transition-opacity"
                   >
                     {t.contact.send}

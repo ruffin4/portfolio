@@ -9,12 +9,12 @@ const SkillCard = ({ name, icon, color }: { name: string; icon: string; color: s
   return (
     <motion.div
       whileHover={{ scale: 1.04, x: 5 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+      transition={{ type: 'spring' as const, stiffness: 400, damping: 20 }}
       className="flex items-center gap-3 rounded-lg border border-white/8 bg-white/3 px-4 py-3 hover:border-primary/40 hover:bg-primary/5 transition-colors duration-200 cursor-default"
     >
       <motion.div
         whileHover={{ rotate: 12, scale: 1.2 }}
-        transition={{ type: 'spring', stiffness: 300 }}
+        transition={{ type: 'spring' as const, stiffness: 300 }}
         className="shrink-0 w-8 h-8 flex items-center justify-center"
       >
         <Icon style={{ color, fontSize: 24 }} />

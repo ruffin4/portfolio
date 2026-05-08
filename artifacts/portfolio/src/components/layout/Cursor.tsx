@@ -38,7 +38,7 @@ export function Cursor() {
           y: position.y - 8,
           scale: isPointer ? 1.5 : 1,
         }}
-        transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 2 }}
+        transition={{ type: 'spring' as const, stiffness: 500, damping: 28, mass: 2 }}
       />
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 border border-primary/50 rounded-full pointer-events-none z-[99]"
@@ -47,7 +47,7 @@ export function Cursor() {
           y: position.y - 16,
           scale: isPointer ? 1.5 : 1,
         }}
-        transition={{ type: 'spring', stiffness: 250, damping: 20, mass: 1 }}
+        transition={{ type: 'spring' as const, stiffness: 250, damping: 20, mass: 1 }}
       />
     </>
   );

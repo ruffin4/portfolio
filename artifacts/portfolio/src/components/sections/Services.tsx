@@ -45,7 +45,7 @@ export function Services() {
               >
                 <motion.div
                   whileHover={{ scale: 1.25, rotate: -8 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                  transition={{ type: 'spring' as const, stiffness: 300, damping: 15 }}
                   className="text-primary w-fit"
                 >
                   <Icon size={30} strokeWidth={1.5} />
@@ -59,7 +59,7 @@ export function Services() {
                 <motion.a
                   href="#contact"
                   whileHover={{ x: 4 }}
-                  transition={{ type: 'spring', stiffness: 400 }}
+                  transition={{ type: 'spring' as const, stiffness: 400 }}
                   className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-auto"
                 >
                   {t.services.learnMore} <ArrowRight size={14} />

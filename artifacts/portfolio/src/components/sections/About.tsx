@@ -26,6 +26,7 @@ function AnimatedNumber({ value }: { value: string }) {
       });
       return controls.stop;
     }
+    return;
   }, [isInView, num, suffix, motionVal]);
 
   return (
@@ -74,7 +75,7 @@ export function About() {
             <motion.a
               href="#contact"
               whileHover={{ x: 6 }}
-              transition={{ type: 'spring', stiffness: 400 }}
+              transition={{ type: 'spring' as const, stiffness: 400 }}
               className="inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-lg border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors duration-200"
             >
               {t.about.cta} <ArrowRight size={16} />
