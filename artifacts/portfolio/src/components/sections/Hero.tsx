@@ -1,13 +1,55 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { SiGithub, SiMaildotru } from 'react-icons/si';
 import { Linkedin, Download, ArrowRight } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
 import { useLang } from '@/lib/i18n';
-import profileMain from '@assets/image1_no_bg.png';
+import photo1 from '@assets/img1_nobg.png';
+import photo2 from '@assets/img2_nobg.png';
+import photo3 from '@assets/img3_nobg.png';
+import photo4 from '@assets/img4_nobg.png';
+
+const photos = [photo1, photo2, photo3, photo4];
+
+const slideVariants = {
+  enter: (dir: number) => ({
+    x: dir > 0 ? 60 : -60,
+    opacity: 0,
+    scale: 0.96,
+    filter: 'blur(4px)',
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+  },
+  exit: (dir: number) => ({
+    x: dir > 0 ? -60 : 60,
+    opacity: 0,
+    scale: 0.96,
+    filter: 'blur(4px)',
+  }),
+};
 
 export function Hero() {
   const { t } = useLang();
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrent((prev) => (prev + 1) % photos.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goTo = (idx: number) => {
+    setDirection(idx > current ? 1 : -1);
+    setCurrent(idx);
+  };
 
   return (
     <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20">
@@ -73,7 +115,6 @@ export function Hero() {
                 href={profileData.socials.github}
                 target="_blank"
                 rel="noreferrer"
-                data-testid="link-github"
                 className="text-muted-foreground hover:text-primary transition-colors p-2 glass-card rounded-xl border-white/5 hover:border-primary/30"
               >
                 <SiGithub size={20} />
@@ -82,14 +123,12 @@ export function Hero() {
                 href={profileData.socials.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                data-testid="link-linkedin"
                 className="text-muted-foreground hover:text-primary transition-colors p-2 glass-card rounded-xl border-white/5 hover:border-primary/30"
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href={`mailto:${profileData.socials.email}`}
-                data-testid="link-email"
                 className="text-muted-foreground hover:text-primary transition-colors p-2 glass-card rounded-xl border-white/5 hover:border-primary/30"
               >
                 <SiMaildotru size={20} />
@@ -97,43 +136,76 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — Profile photo */}
+          {/* RIGHT — Animated photo slideshow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="flex items-center justify-center order-1 lg:order-2"
+            className="flex flex-col items-center justify-center order-1 lg:order-2 gap-5"
           >
-            <div className="relative">
-              {/* Soft glow behind */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-cyan-500/15 to-violet-500/20 blur-2xl scale-105" />
-              <img
-                src={profileMain}
-                alt="Ruffin Rafanomezantsoa — Développeur Fullstack Junior"
-                data-testid="img-profile-hero"
-                className="relative w-full max-w-sm lg:max-w-md h-auto object-cover object-top drop-shadow-2xl"
-                style={{ aspectRatio: '3/4', maxHeight: '520px', objectFit: 'cover' }}
-              />
+            <div className="relative w-full max-w-sm lg:max-w-md">
+              {/* Glow behind photo */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-cyan-500/15 to-violet-500/20 blur-2xl scale-105 rounded-full" />
+
+              {/* Photo carousel */}
+              <div
+                className="relative overflow-hidden"
+                style={{ aspectRatio: '3/4', maxHeight: '520px' }}
+              >
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                  <motion.img
+                    key={current}
+                    src={photos[current]}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
+                    alt={`Ruffin Rafanomezantsoa — photo ${current + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover object-top drop-shadow-2xl"
+                  />
+                </AnimatePresence>
+              </div>
+
               {/* Floating badge — experience */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -left-6 top-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl"
+                className="absolute -left-6 top-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl z-10"
               >
                 <div className="text-2xl font-display font-bold text-gradient">2+</div>
                 <div className="text-xs text-muted-foreground font-medium leading-tight whitespace-pre-line">{t.hero.years}</div>
               </motion.div>
+
               {/* Floating badge — projects */}
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 1.0 }}
-                className="absolute -right-6 bottom-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl"
+                className="absolute -right-6 bottom-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl z-10"
               >
                 <div className="text-2xl font-display font-bold text-gradient">15+</div>
                 <div className="text-xs text-muted-foreground font-medium leading-tight whitespace-pre-line">{t.hero.projects}</div>
               </motion.div>
+            </div>
+
+            {/* Dot navigation */}
+            <div className="flex items-center gap-2 z-10">
+              {photos.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => goTo(idx)}
+                  aria-label={`Photo ${idx + 1}`}
+                  className="transition-all duration-300 rounded-full focus:outline-none"
+                  style={{
+                    width: idx === current ? 24 : 8,
+                    height: 8,
+                    background: idx === current ? '#05D3F8' : 'rgba(255,255,255,0.2)',
+                  }}
+                />
+              ))}
             </div>
           </motion.div>
 
