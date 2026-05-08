@@ -122,7 +122,7 @@ export function Hero() {
               <div className="relative">
                   <img
                     src={profileMain}
-                    alt="Ruffin Rafanomezantsoa — Senior Fullstack & DevOps Engineer"
+                    alt="Ruffin Rafanomezantsoa — Junior Fullstack & DevOps Engineer"
                     data-testid="img-profile-hero"
                     className="w-full max-w-sm lg:max-w-md h-auto object-contain drop-shadow-2xl"
                     style={{ maxHeight: '520px' }}
