@@ -81,7 +81,7 @@ export function Logo({ size = 'md', className = '' }: LogoProps) {
         fontWeight="700"
         fontSize={c.fs}
         letterSpacing="-0.3"
-        fill="currentColor"
+        fill="url(#lg1)"
       >
         uffin
       </text>
