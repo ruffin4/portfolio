@@ -59,14 +59,14 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-wrap justify-center lg:justify-start gap-3 mb-10"
             >
-              <Button size="lg" className="rounded-full px-7 h-12 text-sm font-semibold neon-glow gap-2">
+              <Button size="lg" className="rounded-lg px-7 h-12 text-sm font-semibold neon-glow gap-2">
                 <Download size={16} />
                 Download CV
               </Button>
               <Button
                 size="lg"
                 variant="secondary"
-                className="rounded-full px-7 h-12 text-sm font-semibold glass-card border-white/10 hover:border-primary/50 gap-2"
+                className="rounded-lg px-7 h-12 text-sm font-semibold glass-card border-white/10 hover:border-primary/50 gap-2"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Contact Me
@@ -116,22 +116,15 @@ export function Hero() {
             className="flex items-center justify-center order-1 lg:order-2"
           >
             <div className="relative">
-              {/* Outer glow ring */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/40 via-cyan-500/20 to-violet-500/30 blur-2xl scale-105" />
-              {/* Animated border gradient */}
-              <div className="relative p-[2px] rounded-3xl bg-gradient-to-br from-primary/60 via-cyan-400/30 to-violet-500/50">
-                <div className="relative overflow-hidden rounded-[22px] bg-background/50">
-                  <img
-                    src={profileMain}
-                    alt="Ruffin Rafanomezantsoa — Senior Fullstack & DevOps Engineer"
-                    data-testid="img-profile-hero"
-                    className="w-full max-w-sm lg:max-w-md h-auto object-cover object-top"
-                    style={{ aspectRatio: '3/4', maxHeight: '520px', objectFit: 'cover' }}
-                  />
-                  {/* Subtle bottom fade to blend with background */}
-                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background/60 to-transparent" />
-                </div>
-              </div>
+              {/* Soft glow behind */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-cyan-500/15 to-violet-500/20 blur-2xl scale-105" />
+              <img
+                src={profileMain}
+                alt="Ruffin Rafanomezantsoa — Développeur Fullstack Junior"
+                data-testid="img-profile-hero"
+                className="relative w-full max-w-sm lg:max-w-md h-auto object-cover object-top drop-shadow-2xl"
+                style={{ aspectRatio: '3/4', maxHeight: '520px', objectFit: 'cover' }}
+              />
               {/* Floating badge — experience */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -139,8 +132,8 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 0.8 }}
                 className="absolute -left-6 top-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl"
               >
-                <div className="text-2xl font-display font-bold text-gradient">4+</div>
-                <div className="text-xs text-muted-foreground font-medium leading-tight">Years<br/>Experience</div>
+                <div className="text-2xl font-display font-bold text-gradient">2+</div>
+                <div className="text-xs text-muted-foreground font-medium leading-tight">Années<br/>Expérience</div>
               </motion.div>
               {/* Floating badge — projects */}
               <motion.div
@@ -149,8 +142,8 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 1.0 }}
                 className="absolute -right-6 bottom-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl"
               >
-                <div className="text-2xl font-display font-bold text-gradient">50+</div>
-                <div className="text-xs text-muted-foreground font-medium leading-tight">Projects<br/>Delivered</div>
+                <div className="text-2xl font-display font-bold text-gradient">15+</div>
+                <div className="text-xs text-muted-foreground font-medium leading-tight">Projets<br/>Livrés</div>
               </motion.div>
             </div>
           </motion.div>
