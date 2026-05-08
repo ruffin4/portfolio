@@ -39,7 +39,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <a href="#">
-          <Logo size="md" />
+          <Logo size="md" className="text-primary" />
         </a>
 
         {/* Desktop Nav */}

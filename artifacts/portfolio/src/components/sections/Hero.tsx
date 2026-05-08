@@ -10,7 +10,7 @@ import photo2 from '@assets/img2_nobg.png';
 import photo3 from '@assets/img3_nobg.png';
 import photo4 from '@assets/img4_nobg.png';
 
-const photos = [photo1, photo2, photo3, photo4];
+const photos = [photo3, photo1, photo2, photo4];
 
 const slideVariants = {
   enter: (dir: number) => ({
@@ -154,7 +154,7 @@ export function Hero() {
                 className="relative overflow-hidden"
                 style={{ aspectRatio: '3/4', maxHeight: '520px' }}
               >
-                <AnimatePresence initial={false} custom={direction} mode="wait">
+                <AnimatePresence custom={direction} mode="wait">
                   <motion.img
                     key={current}
                     src={photos[current]}

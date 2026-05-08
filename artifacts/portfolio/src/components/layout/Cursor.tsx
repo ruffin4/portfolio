@@ -10,24 +10,22 @@ export function Cursor() {
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
+      const { clientX, clientY } = e;
+      setPosition({ x: clientX, y: clientY });
 
-    const updateCursorType = () => {
-      const hoveredElement = document.elementFromPoint(position.x, position.y);
+      // Detect if the hovered element is clickable
+      const hoveredElement = document.elementFromPoint(clientX, clientY);
       const isClickable = hoveredElement?.matches('a, button, input, textarea, select, [role="button"]') || 
                           hoveredElement?.closest('a, button, [role="button"]');
       setIsPointer(!!isClickable);
     };
 
     window.addEventListener('mousemove', updatePosition);
-    window.addEventListener('mouseover', updateCursorType);
 
     return () => {
       window.removeEventListener('mousemove', updatePosition);
-      window.removeEventListener('mouseover', updateCursorType);
     };
-  }, [position.x, position.y]);
+  }, []);
 
   if (window.matchMedia('(pointer: coarse)').matches) return null;
 

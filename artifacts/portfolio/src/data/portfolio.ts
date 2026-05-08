@@ -1,3 +1,10 @@
+import projectPayroll from '@assets/Capture_d’écran_du_2026-05-08_10-16-11_1778227414729.png';
+import projectSaas from '@assets/Capture_d’écran_du_2026-05-08_10-16-33_1778227414729.png';
+import projectEcommerce from '@assets/Capture_d’écran_du_2026-05-08_10-16-41_1778227414729.png';
+import projectFinance from '@assets/Capture_d’écran_du_2026-05-08_10-17-24_1778227414729.png';
+import projectChat from '@assets/Capture_d’écran_du_2026-05-08_10-17-59_1778227414729.png';
+import projectTask from '@assets/Capture_d’écran_du_2026-05-08_10-18-34_1778227414729.png';
+
 export const profileData = {
   name: "Ruffin Rafanomezantsoa",
   role: "Développeur Web Fullstack Junior | DevOps",
@@ -15,7 +22,7 @@ export const profileData = {
     linkedin: "https://linkedin.com",
     email: "hello@ruffin.dev",
     phone: "+261 34 00 000 00",
-    whatsapp: "https://wa.me/261340000000",
+    whatsapp: "https://wa.me/261388382733",
     facebook: "https://facebook.com",
   }
 };
@@ -104,7 +111,7 @@ export const projects = [
   {
     title: "Payroll Management System",
     description: "Système de gestion de paie entreprise avec calculs de taxes automatisés, rapports détaillés et portails employés sécurisés. Architecture multi-tenant complète.",
-    image: "/images/project-payroll.png",
+    image: projectPayroll,
     tech: ["NestJS", "PostgreSQL", "React", "Docker"],
     status: "PROJET PHARE",
     statusColor: "green",
@@ -116,7 +123,7 @@ export const projects = [
   {
     title: "SaaS Dashboard Platform",
     description: "Dashboard analytique multi-tenant avec traitement de données en temps réel et widgets personnalisables.",
-    image: "/images/project-saas.png",
+    image: projectSaas,
     tech: ["Next.js", "Prisma", "Redis", "Tailwind"],
     status: "TERMINÉ",
     statusColor: "green",
@@ -128,7 +135,7 @@ export const projects = [
   {
     title: "E-commerce Application",
     description: "Boutique e-commerce headless haute conversion avec paiement sécurisé et gestion des stocks.",
-    image: "/images/project-ecommerce.png",
+    image: projectEcommerce,
     tech: ["React", "Node.js", "MySQL", "Stripe"],
     status: "TERMINÉ",
     statusColor: "green",
@@ -140,8 +147,32 @@ export const projects = [
   {
     title: "Finance Management App",
     description: "Application de gestion de finances personnelles avec visualisations interactives et catégorisation automatique.",
-    image: "/images/project-finance.png",
+    image: projectFinance,
     tech: ["Next.js", "PostgreSQL", "Prisma", "Chart.js"],
+    status: "TERMINÉ",
+    statusColor: "green",
+    category: "WEB APP",
+    github: "#",
+    live: "#",
+    featured: false,
+  },
+  {
+    title: "Real-time Chat Platform",
+    description: "Application de messagerie instantanée avec salons de discussion, notifications en temps réel et partage de fichiers.",
+    image: projectChat,
+    tech: ["Node.js", "Socket.io", "React", "Redis"],
+    status: "TERMINÉ",
+    statusColor: "green",
+    category: "WEB APP",
+    github: "#",
+    live: "#",
+    featured: false,
+  },
+  {
+    title: "Task Management System",
+    description: "Outil de gestion de tâches collaboratif avec tableaux Kanban, gestion d'équipe et suivi de progression.",
+    image: projectTask,
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
     status: "TERMINÉ",
     statusColor: "green",
     category: "WEB APP",

@@ -26,8 +26,8 @@ export function Logo({ size = 'md', className = '' }: LogoProps) {
     >
       <defs>
         <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#05D3F8" />
-          <stop offset="100%" stopColor="#05D3F8" />
+          <stop offset="0%" stopColor="currentColor" />
+          <stop offset="100%" stopColor="currentColor" />
         </linearGradient>
       </defs>
 
@@ -91,7 +91,7 @@ export function Logo({ size = 'md', className = '' }: LogoProps) {
         cx={wordX + c.fs * 2.88}
         cy={cy + c.fs * 0.35 - c.fs * 0.08}
         r={c.fs * 0.14}
-        fill="#05D3F8"
+        fill="currentColor"
       />
     </svg>
   );

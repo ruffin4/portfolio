@@ -51,12 +51,13 @@ export function Projects() {
                 {featured.status}
               </span>
             </div>
-            <div className="relative w-full bg-black/40" style={{ minHeight: 340 }}>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[75%] h-[85%] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                  <span className="text-muted-foreground/30 text-sm">{t.projects.screenshot}</span>
-                </div>
-              </div>
+            <div className="relative w-full bg-black/40 overflow-hidden" style={{ minHeight: 340 }}>
+              <img 
+                src={featured.image} 
+                alt={featured.title} 
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20" />
             </div>
             <div className="p-8 border-t border-white/8">
               <p className="text-xs font-bold tracking-widest text-primary uppercase mb-3">{featured.category}</p>
@@ -118,10 +119,14 @@ export function Projects() {
                 </span>
               </div>
               <div className="relative w-full aspect-video bg-black/40 flex items-center justify-center overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
-                <span className="text-muted-foreground/20 text-xs">{t.projects.preview}</span>
+                <motion.div
+                  className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
               </div>
               <div className="p-5">
                 <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">{project.category}</p>
