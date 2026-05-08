@@ -4,6 +4,7 @@ import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/ui/theme-provider';
 import { useLang } from '@/lib/i18n';
+import { Logo } from '@/components/ui/Logo';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,8 +38,8 @@ export function Navbar() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <a href="#" className="text-2xl font-display font-bold tracking-tighter">
-          Ruffin<span className="text-primary">.</span>
+        <a href="#">
+          <Logo size="md" />
         </a>
 
         {/* Desktop Nav */}
