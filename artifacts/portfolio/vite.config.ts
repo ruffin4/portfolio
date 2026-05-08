@@ -9,48 +9,67 @@ const basePath = process.env.BASE_PATH || "/";
 
 export default defineConfig({
   base: basePath,
+
   plugins: [
     react(),
     tailwindcss(),
+
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [
           runtimeErrorOverlay(),
+
           await import("@replit/vite-plugin-cartographer").then((m) =>
             m.cartographer({
               root: path.resolve(import.meta.dirname, ".."),
             }),
           ),
+
           await import("@replit/vite-plugin-dev-banner").then((m) =>
             m.devBanner(),
           ),
         ]
       : []),
   ],
+
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
-      "@assets": path.resolve(import.meta.dirname, "..", "..", "attached_assets"),
+
+      "@assets": path.resolve(
+        import.meta.dirname,
+        "..",
+        "..",
+        "attached_assets",
+      ),
     },
+
     dedupe: ["react", "react-dom"],
   },
+
   root: path.resolve(import.meta.dirname),
+
   build: {
+    sourcemap: false,
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    target: "esnext",
   },
+
   server: {
     port,
-    strictPort: true,
+    strictPort: false,
     host: "0.0.0.0",
+
     allowedHosts: true,
+
     fs: {
       strict: true,
-      allow: [
-        path.resolve(import.meta.dirname, "..", ".."),
-      ],
+
+      allow: [path.resolve(import.meta.dirname, "..", "..")],
     },
   },
+
   preview: {
     port,
     host: "0.0.0.0",
