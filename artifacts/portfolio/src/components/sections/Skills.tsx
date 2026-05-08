@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { skillCategories, skillTags } from '@/data/portfolio';
 import * as Icons from 'react-icons/si';
+import { useLang } from '@/lib/i18n';
 
 const SkillCard = ({ name, icon, color }: { name: string; icon: string; color: string }) => {
   // @ts-ignore
@@ -17,6 +18,7 @@ const SkillCard = ({ name, icon, color }: { name: string; icon: string; color: s
 };
 
 export function Skills() {
+  const { t } = useLang();
   const left = skillCategories.slice(0, 2);
   const right = skillCategories.slice(2, 4);
 
@@ -31,14 +33,13 @@ export function Skills() {
           className="mb-14"
         >
           <p className="text-xs font-semibold tracking-widest text-primary uppercase mb-4">
-            02 &nbsp;·&nbsp; Technologies &amp; outils maîtrisés
+            {t.skills.tag}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">Compétences</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.skills.title}</h2>
           <div className="w-12 h-[3px] bg-primary rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left column */}
           <div className="space-y-10">
             {left.map((cat, ci) => (
               <motion.div
@@ -59,7 +60,6 @@ export function Skills() {
             ))}
           </div>
 
-          {/* Right column */}
           <div className="space-y-10">
             {right.map((cat, ci) => (
               <motion.div
@@ -81,7 +81,6 @@ export function Skills() {
           </div>
         </div>
 
-        {/* Tag cloud */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

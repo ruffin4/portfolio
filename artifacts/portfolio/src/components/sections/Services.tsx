@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { services } from '@/data/portfolio';
 import { Globe, Layers, Database, Wrench, Zap, Shield, ArrowRight } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
 
 const iconMap: Record<string, React.ElementType> = {
   Globe,
@@ -12,6 +13,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export function Services() {
+  const { t } = useLang();
+
   return (
     <section id="services" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -23,9 +26,9 @@ export function Services() {
           className="mb-14"
         >
           <p className="text-xs font-semibold tracking-widest text-primary uppercase mb-4">
-            03 &nbsp;·&nbsp; Ce que je propose
+            {t.services.tag}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">Services</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.services.title}</h2>
           <div className="w-12 h-[3px] bg-primary rounded-full" />
         </motion.div>
 
@@ -55,7 +58,7 @@ export function Services() {
                   href="#contact"
                   className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-auto group-hover:gap-2.5 transition-all duration-200"
                 >
-                  En savoir plus <ArrowRight size={14} />
+                  {t.services.learnMore} <ArrowRight size={14} />
                 </a>
               </motion.div>
             );

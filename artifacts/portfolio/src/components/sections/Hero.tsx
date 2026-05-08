@@ -3,9 +3,12 @@ import { Button } from '@/components/ui/button';
 import { SiGithub, SiMaildotru } from 'react-icons/si';
 import { Linkedin, Download, ArrowRight } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
+import { useLang } from '@/lib/i18n';
 import profileMain from '@assets/image1_no_bg.png';
 
 export function Hero() {
+  const { t } = useLang();
+
   return (
     <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20">
       {/* Abstract Background */}
@@ -30,7 +33,7 @@ export function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </span>
-              <span className="text-sm font-medium">{profileData.availability}</span>
+              <span className="text-sm font-medium">{t.hero.available}</span>
             </motion.div>
 
             <motion.h1
@@ -50,7 +53,7 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-base md:text-lg text-muted-foreground mb-8 max-w-lg"
             >
-              {profileData.shortDesc}
+              {t.hero.desc}
             </motion.p>
 
             <motion.div
@@ -61,7 +64,7 @@ export function Hero() {
             >
               <Button size="lg" className="rounded-lg px-7 h-12 text-sm font-semibold neon-glow gap-2">
                 <Download size={16} />
-                Download CV
+                {t.hero.downloadCV}
               </Button>
               <Button
                 size="lg"
@@ -69,7 +72,7 @@ export function Hero() {
                 className="rounded-lg px-7 h-12 text-sm font-semibold glass-card border-white/10 hover:border-primary/50 gap-2"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Contact Me
+                {t.hero.contactMe}
                 <ArrowRight size={16} />
               </Button>
             </motion.div>
@@ -133,7 +136,7 @@ export function Hero() {
                 className="absolute -left-6 top-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl"
               >
                 <div className="text-2xl font-display font-bold text-gradient">2+</div>
-                <div className="text-xs text-muted-foreground font-medium leading-tight">Années<br/>Expérience</div>
+                <div className="text-xs text-muted-foreground font-medium leading-tight whitespace-pre-line">{t.hero.years}</div>
               </motion.div>
               {/* Floating badge — projects */}
               <motion.div
@@ -143,7 +146,7 @@ export function Hero() {
                 className="absolute -right-6 bottom-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl"
               >
                 <div className="text-2xl font-display font-bold text-gradient">15+</div>
-                <div className="text-xs text-muted-foreground font-medium leading-tight">Projets<br/>Livrés</div>
+                <div className="text-xs text-muted-foreground font-medium leading-tight whitespace-pre-line">{t.hero.projects}</div>
               </motion.div>
             </div>
           </motion.div>

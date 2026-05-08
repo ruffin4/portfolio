@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
+import { useLang } from '@/lib/i18n';
 
 export function DevOps() {
+  const { t } = useLang();
+
   return (
     <section id="devops" className="py-24 md:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -13,17 +16,13 @@ export function DevOps() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">DevOps Excellence</h2>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-gradient">{t.devops.title}</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Building code is only half the battle. Delivering it securely, reliably, and efficiently is where true engineering shines.
+              {t.devops.desc}
             </p>
-            
+
             <div className="space-y-6">
-              {[
-                { title: 'Containerization', desc: 'Docker & Docker Compose for isolated, consistent environments.' },
-                { title: 'CI/CD Automation', desc: 'GitHub Actions for testing, building, and deploying.' },
-                { title: 'Infrastructure', desc: 'Linux VPS provisioning, Nginx reverse proxy, and SSL configuration.' }
-              ].map((item, i) => (
+              {t.devops.items.map((item, i) => (
                 <div key={i} className="flex gap-4 border-l-2 border-primary/30 pl-4 relative">
                   <div className="absolute w-2 h-2 rounded-full bg-primary -left-[5px] top-2" />
                   <div>
@@ -55,7 +54,7 @@ export function DevOps() {
               <div className="text-blue-400 mt-2">on:</div>
               <div className="pl-4 text-blue-400">push:</div>
               <div className="pl-8 text-blue-400">branches: <span className="text-yellow-300">[main]</span></div>
-              
+
               <div className="text-blue-400 mt-4">jobs:</div>
               <div className="pl-4 text-blue-400">deploy:</div>
               <div className="pl-8 text-blue-400">runs-on: <span className="text-yellow-300">ubuntu-latest</span></div>

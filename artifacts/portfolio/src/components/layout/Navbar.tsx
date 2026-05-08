@@ -3,19 +3,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/ui/theme-provider';
-
-const navLinks = [
-  { name: 'À propos', href: '#about' },
-  { name: 'Compétences', href: '#skills' },
-  { name: 'Projets', href: '#projects' },
-  { name: 'Services', href: '#services' },
-  { name: 'Contact', href: '#contact' },
-];
+import { useLang } from '@/lib/i18n';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { lang, setLang, t } = useLang();
+
+  const navLinks = [
+    { name: t.nav.about, href: '#about' },
+    { name: t.nav.skills, href: '#skills' },
+    { name: t.nav.projects, href: '#projects' },
+    { name: t.nav.services, href: '#services' },
+    { name: t.nav.contact, href: '#contact' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,8 +54,8 @@ export function Navbar() {
               </a>
             ))}
           </div>
-          
-          <div className="flex items-center gap-4 pl-4 border-l border-border">
+
+          <div className="flex items-center gap-3 pl-4 border-l border-border">
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -61,14 +63,45 @@ export function Navbar() {
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
-            <Button variant="default" size="sm" className="rounded-full font-medium">
-              Télécharger CV
+
+            {/* Language switcher */}
+            <div className="flex items-center rounded-lg border border-white/10 overflow-hidden text-xs font-bold">
+              <button
+                onClick={() => setLang('fr')}
+                className={`px-2.5 py-1.5 transition-colors ${lang === 'fr' ? 'bg-primary text-background' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                FR
+              </button>
+              <button
+                onClick={() => setLang('en')}
+                className={`px-2.5 py-1.5 transition-colors ${lang === 'en' ? 'bg-primary text-background' : 'text-muted-foreground hover:text-foreground'}`}
+              >
+                EN
+              </button>
+            </div>
+
+            <Button variant="default" size="sm" className="rounded-lg font-medium">
+              {t.nav.downloadCV}
             </Button>
           </div>
         </nav>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
+          <div className="flex items-center rounded-lg border border-white/10 overflow-hidden text-xs font-bold">
+            <button
+              onClick={() => setLang('fr')}
+              className={`px-2 py-1 transition-colors ${lang === 'fr' ? 'bg-primary text-background' : 'text-muted-foreground'}`}
+            >
+              FR
+            </button>
+            <button
+              onClick={() => setLang('en')}
+              className={`px-2 py-1 transition-colors ${lang === 'en' ? 'bg-primary text-background' : 'text-muted-foreground'}`}
+            >
+              EN
+            </button>
+          </div>
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="text-muted-foreground hover:text-foreground transition-colors"
@@ -104,8 +137,8 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <Button className="mt-4 w-full rounded-full">
-                Télécharger CV
+              <Button className="mt-4 w-full rounded-lg">
+                {t.nav.downloadCV}
               </Button>
             </div>
           </motion.div>

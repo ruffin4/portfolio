@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { blogPosts } from '@/data/portfolio';
 import { ArrowRight } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
 
 export function Blog() {
+  const { t } = useLang();
+
   return (
     <section id="blog" className="py-24 md:py-32 relative bg-secondary/10">
       <div className="container mx-auto px-4">
@@ -14,7 +17,7 @@ export function Blog() {
           className="mb-16 flex justify-between items-end"
         >
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Engineering Insights</h2>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">{t.blog.title}</h2>
             <div className="w-20 h-1 bg-primary rounded-full" />
           </div>
         </motion.div>

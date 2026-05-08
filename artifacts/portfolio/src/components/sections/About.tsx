@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { profileData } from '@/data/portfolio';
 import { ArrowRight } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
 
 export function About() {
+  const { t } = useLang();
+
   return (
     <section id="about" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -14,9 +17,9 @@ export function About() {
           className="mb-14"
         >
           <p className="text-xs font-semibold tracking-widest text-primary uppercase mb-4">
-            01 &nbsp;·&nbsp; Qui je suis
+            {t.about.tag}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">À propos de moi</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.about.title}</h2>
           <div className="w-12 h-[3px] bg-primary rounded-full" />
         </motion.div>
 
@@ -30,10 +33,10 @@ export function About() {
             className="space-y-6"
           >
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Développeur Web Fullstack basé à Madagascar, je conçois et réalise des plateformes digitales sur mesure depuis plus de 4 ans. Fort d'un socle technique solide (Node.js, NestJS, React, TypeScript et autres…), j'accompagne mes clients de l'idée initiale jusqu'à la mise en ligne d'outils performants.
+              {t.about.p1}
             </p>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Mon approche est centrée sur le résultat et l'expérience utilisateur. Qu'il s'agisse d'un site vitrine élégant, d'un e-commerce ou d'une application métier complexe, je mets au point des solutions fiables, rapides et parfaitement adaptées à vos besoins réels.
+              {t.about.p2}
             </p>
 
             <motion.a
@@ -41,7 +44,7 @@ export function About() {
               whileHover={{ x: 4 }}
               className="inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-lg border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors duration-200"
             >
-              En savoir plus sur mon parcours <ArrowRight size={16} />
+              {t.about.cta} <ArrowRight size={16} />
             </motion.a>
           </motion.div>
 
@@ -84,16 +87,16 @@ export function About() {
             >
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
-                <p className="font-semibold text-foreground">Un projet en tête ?</p>
+                <p className="font-semibold text-foreground">{t.about.ctaCard}</p>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Je suis actuellement ouvert à de nouveaux projets stimulants, que ce soit en freelance pour construire l'architecture de votre app, ou pour une plateforme ou autres !
+                {t.about.ctaCardDesc}
               </p>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-primary uppercase hover:underline"
               >
-                Lancer une discussion <ArrowRight size={12} />
+                {t.about.ctaCardLink} <ArrowRight size={12} />
               </a>
             </motion.div>
           </motion.div>

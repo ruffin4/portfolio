@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { projects } from '@/data/portfolio';
 import { ExternalLink, Github } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
 
 export function Projects() {
+  const { t } = useLang();
   const featured = projects.find(p => p.featured);
   const grid = projects.filter(p => !p.featured);
 
@@ -17,13 +19,12 @@ export function Projects() {
           className="mb-14"
         >
           <p className="text-xs font-semibold tracking-widest text-primary uppercase mb-4">
-            04 &nbsp;·&nbsp; Ce que j'ai construit
+            {t.projects.tag}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">Projets</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.projects.title}</h2>
           <div className="w-12 h-[3px] bg-primary rounded-full" />
         </motion.div>
 
-        {/* Featured project */}
         {featured && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -32,23 +33,20 @@ export function Projects() {
             transition={{ duration: 0.7 }}
             className="relative rounded-xl border border-white/8 bg-white/3 overflow-hidden mb-8"
           >
-            {/* Status badge */}
             <div className="absolute top-4 right-4 z-10">
               <span className="px-3 py-1 rounded text-xs font-bold tracking-widest bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase">
                 {featured.status}
               </span>
             </div>
 
-            {/* Screenshot placeholder */}
             <div className="relative w-full bg-black/40" style={{ minHeight: 340 }}>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-[75%] h-[85%] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                  <span className="text-muted-foreground/30 text-sm">Capture d'écran du projet</span>
+                  <span className="text-muted-foreground/30 text-sm">{t.projects.screenshot}</span>
                 </div>
               </div>
             </div>
 
-            {/* Info bar */}
             <div className="p-8 border-t border-white/8">
               <p className="text-xs font-bold tracking-widest text-primary uppercase mb-3">
                 {featured.category}
@@ -77,7 +75,6 @@ export function Projects() {
           </motion.div>
         )}
 
-        {/* Grid of other projects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {grid.map((project, index) => (
             <motion.div
@@ -88,19 +85,16 @@ export function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative rounded-xl border border-white/8 bg-white/3 overflow-hidden hover:border-primary/25 transition-colors duration-300"
             >
-              {/* Status badge */}
               <div className="absolute top-3 right-3 z-10">
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-widest bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase">
                   {project.status}
                 </span>
               </div>
 
-              {/* Screenshot placeholder */}
               <div className="relative w-full aspect-video bg-black/40 flex items-center justify-center">
-                <span className="text-muted-foreground/20 text-xs">Aperçu du projet</span>
+                <span className="text-muted-foreground/20 text-xs">{t.projects.preview}</span>
               </div>
 
-              {/* Info */}
               <div className="p-5">
                 <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">
                   {project.category}
@@ -112,12 +106,12 @@ export function Projects() {
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
-                  {project.tech.map(t => (
+                  {project.tech.map(tech => (
                     <span
-                      key={t}
+                      key={tech}
                       className="px-2 py-0.5 rounded text-[10px] font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide"
                     >
-                      {t}
+                      {tech}
                     </span>
                   ))}
                 </div>

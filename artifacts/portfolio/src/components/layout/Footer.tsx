@@ -1,18 +1,21 @@
 import { profileData } from '@/data/portfolio';
 import { SiGithub, SiMaildotru } from 'react-icons/si';
 import { Linkedin } from 'lucide-react';
+import { useLang } from '@/lib/i18n';
 
 export function Footer() {
+  const { t } = useLang();
+
   return (
     <footer className="border-t border-border bg-background py-12">
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
-        
+
         <div className="text-2xl font-display font-bold tracking-tighter">
           Ruffin<span className="text-primary">.</span>
         </div>
 
         <p className="text-muted-foreground text-sm text-center md:text-left">
-          &copy; {new Date().getFullYear()} {profileData.name}. All rights reserved.
+          &copy; {new Date().getFullYear()} {profileData.name}. {t.footer.rights}
         </p>
 
         <div className="flex items-center gap-4">
@@ -26,7 +29,7 @@ export function Footer() {
             <SiMaildotru size={20} />
           </a>
         </div>
-        
+
       </div>
     </footer>
   );

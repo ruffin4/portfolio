@@ -2,17 +2,10 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Globe, Github, Linkedin, ArrowRight } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
-
-const subjects = [
-  "Développement d'une application web",
-  "Création d'un site vitrine",
-  "Mise en place d'une API",
-  "DevOps & Infrastructure",
-  "Maintenance & Support",
-  "Autre demande",
-];
+import { useLang } from '@/lib/i18n';
 
 export function Contact() {
+  const { t } = useLang();
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
 
@@ -38,9 +31,9 @@ export function Contact() {
           className="mb-14"
         >
           <p className="text-xs font-semibold tracking-widest text-primary uppercase mb-4">
-            06 &nbsp;·&nbsp; Travaillons ensemble
+            {t.contact.tag}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">Contact</h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.contact.title}</h2>
           <div className="w-12 h-[3px] bg-primary rounded-full" />
         </motion.div>
 
@@ -53,7 +46,7 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-2 space-y-8"
           >
-            <h3 className="text-xl font-semibold text-foreground">Informations de contact</h3>
+            <h3 className="text-xl font-semibold text-foreground">{t.contact.infoTitle}</h3>
 
             <div className="space-y-5">
               <div className="flex items-start gap-4">
@@ -71,7 +64,7 @@ export function Contact() {
                   <Phone size={16} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">Téléphone</p>
+                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">{t.contact.phone}</p>
                   <p className="text-sm text-foreground">{profileData.socials.phone}</p>
                 </div>
               </div>
@@ -81,7 +74,7 @@ export function Contact() {
                   <MapPin size={16} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">Localisation</p>
+                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">{t.contact.location}</p>
                   <p className="text-sm text-foreground">{profileData.location}</p>
                 </div>
               </div>
@@ -90,18 +83,17 @@ export function Contact() {
                 <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <Clock size={16} />
                 </div>
-                <p className="text-sm text-foreground">Réponse sous 24h</p>
+                <p className="text-sm text-foreground">{t.contact.responseTime}</p>
               </div>
 
               <div className="flex items-center gap-4">
                 <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
                   <Globe size={16} />
                 </div>
-                <p className="text-sm text-foreground">Disponible en remote</p>
+                <p className="text-sm text-foreground">{t.contact.remote}</p>
               </div>
             </div>
 
-            {/* Social buttons */}
             <div className="flex gap-3 pt-2">
               <a
                 href={profileData.socials.github}
@@ -136,15 +128,15 @@ export function Contact() {
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
                     <ArrowRight size={20} />
                   </div>
-                  <p className="text-lg font-semibold text-foreground">Message envoyé !</p>
-                  <p className="text-sm text-muted-foreground">Je vous répondrai dans les plus brefs délais.</p>
+                  <p className="text-lg font-semibold text-foreground">{t.contact.sentTitle}</p>
+                  <p className="text-sm text-muted-foreground">{t.contact.sentDesc}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                        Nom complet
+                        {t.contact.nameFull}
                       </label>
                       <input
                         type="text"
@@ -157,7 +149,7 @@ export function Contact() {
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                        Adresse email
+                        {t.contact.email}
                       </label>
                       <input
                         type="email"
@@ -172,7 +164,7 @@ export function Contact() {
 
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                      Sujet
+                      {t.contact.subject}
                     </label>
                     <select
                       name="subject"
@@ -181,8 +173,8 @@ export function Contact() {
                       required
                       className="w-full rounded-lg border border-white/10 bg-[#13151c] px-4 py-3 text-sm text-foreground focus:outline-none focus:border-primary/50 transition-colors appearance-none cursor-pointer"
                     >
-                      <option value="" disabled>Choisir un sujet</option>
-                      {subjects.map(s => (
+                      <option value="" disabled>{t.contact.subjectPlaceholder}</option>
+                      {t.contact.subjects.map(s => (
                         <option key={s} value={s}>{s}</option>
                       ))}
                     </select>
@@ -190,7 +182,7 @@ export function Contact() {
 
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                      Message
+                      {t.contact.message}
                     </label>
                     <textarea
                       name="message"
@@ -198,7 +190,7 @@ export function Contact() {
                       onChange={handleChange}
                       required
                       rows={6}
-                      placeholder="Décrivez votre projet ou votre demande..."
+                      placeholder={t.contact.messagePlaceholder}
                       className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors resize-none"
                     />
                   </div>
@@ -207,7 +199,7 @@ export function Contact() {
                     type="submit"
                     className="w-full rounded-lg bg-primary text-background font-semibold py-3 text-sm hover:opacity-90 transition-opacity"
                   >
-                    Envoyer le message
+                    {t.contact.send}
                   </button>
                 </form>
               )}
