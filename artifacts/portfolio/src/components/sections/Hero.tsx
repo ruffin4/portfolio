@@ -23,28 +23,14 @@ export function Hero() {
 
           {/* LEFT — Text content */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary/30"
-            >
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </span>
-              <span className="text-sm font-medium">{t.hero.available}</span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter mb-4 leading-tight"
             >
-              <span className="block text-gradient">Fullstack JS/TS</span>
+              <span className="block text-gradient">Fullstack</span>
               <span className="block">& DevOps</span>
-              <span className="block">Engineer</span>
             </motion.h1>
 
             <motion.p
