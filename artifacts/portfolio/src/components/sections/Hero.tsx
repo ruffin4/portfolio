@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { SiGithub, SiMaildotru } from 'react-icons/si';
 import { Linkedin, Download, ArrowRight } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
-import profileMain from '@assets/image1_1778226703318.png';
+import profileMain from '../../assets/profile_hero_nobg.png';
 
 export function Hero() {
   return (
@@ -118,19 +118,15 @@ export function Hero() {
             <div className="relative">
               {/* Outer glow ring */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/40 via-cyan-500/20 to-violet-500/30 blur-2xl scale-105" />
-              {/* Animated border gradient */}
-              <div className="relative p-[2px] rounded-3xl bg-gradient-to-br from-primary/60 via-cyan-400/30 to-violet-500/50">
-                <div className="relative overflow-hidden rounded-[22px] bg-background/50">
+              {/* No border frame — let the transparent PNG float freely */}
+              <div className="relative">
                   <img
                     src={profileMain}
                     alt="Ruffin Rafanomezantsoa — Senior Fullstack & DevOps Engineer"
                     data-testid="img-profile-hero"
-                    className="w-full max-w-sm lg:max-w-md h-auto object-cover object-top"
-                    style={{ aspectRatio: '3/4', maxHeight: '520px', objectFit: 'cover' }}
+                    className="w-full max-w-sm lg:max-w-md h-auto object-contain drop-shadow-2xl"
+                    style={{ maxHeight: '520px' }}
                   />
-                  {/* Subtle bottom fade to blend with background */}
-                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background/60 to-transparent" />
-                </div>
               </div>
               {/* Floating badge — experience */}
               <motion.div
