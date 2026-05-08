@@ -1,9 +1,9 @@
-import projectPayroll from '@assets/Capture_d’écran_du_2026-05-08_10-16-11_1778227414729.png';
-import projectSaas from '@assets/Capture_d’écran_du_2026-05-08_10-16-33_1778227414729.png';
-import projectEcommerce from '@assets/Capture_d’écran_du_2026-05-08_10-16-41_1778227414729.png';
-import projectFinance from '@assets/Capture_d’écran_du_2026-05-08_10-17-24_1778227414729.png';
-import projectChat from '@assets/Capture_d’écran_du_2026-05-08_10-17-59_1778227414729.png';
-import projectTask from '@assets/Capture_d’écran_du_2026-05-08_10-18-34_1778227414729.png';
+import projectPayroll from '../assets/images/Capture_d’écran_du_2026-05-08_10-16-11_1778227414729.png';
+import projectSaas from '../assets/images/Capture_d’écran_du_2026-05-08_10-16-33_1778227414729.png';
+import projectEcommerce from '../assets/images/Capture_d’écran_du_2026-05-08_10-16-41_1778227414729.png';
+import projectFinance from '../assets/images/Capture_d’écran_du_2026-05-08_10-17-24_1778227414729.png';
+import projectChat from '../assets/images/Capture_d’écran_du_2026-05-08_10-17-59_1778227414729.png';
+import projectTask from '../assets/images/Capture_d’écran_du_2026-05-08_10-18-34_1778227414729.png';
 
 export const profileData = {
   name: "Ruffin Rafanomezantsoa",

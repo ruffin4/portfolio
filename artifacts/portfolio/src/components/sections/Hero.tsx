@@ -5,10 +5,10 @@ import { SiGithub, SiWhatsapp, SiFacebook } from 'react-icons/si';
 import { Linkedin, Download, ArrowRight } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
 import { useLang } from '@/lib/i18n';
-import photo1 from '@assets/img1_nobg.png';
-import photo2 from '@assets/img2_nobg.png';
-import photo3 from '@assets/img3_nobg.png';
-import photo4 from '@assets/img4_nobg.png';
+import photo1 from '@/assets/images/img1_nobg.png';
+import photo2 from '@/assets/images/img2_nobg.png';
+import photo3 from '@/assets/images/img3_nobg.png';
+import photo4 from '@/assets/images/img4_nobg.png';
 
 const photos = [photo3, photo1, photo2, photo4];
 
