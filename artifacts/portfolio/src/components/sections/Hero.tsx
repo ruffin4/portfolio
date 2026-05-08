@@ -135,8 +135,8 @@ export function Hero() {
                 transition={{ duration: 0.5, delay: 0.8 }}
                 className="absolute -left-6 top-1/3 glass-card border-white/10 px-4 py-3 rounded-2xl shadow-xl"
               >
-                <div className="text-2xl font-display font-bold text-gradient">4+</div>
-                <div className="text-xs text-muted-foreground font-medium leading-tight">Years<br/>Experience</div>
+                <div className="text-2xl font-display font-bold text-gradient">1</div>
+                <div className="text-xs text-muted-foreground font-medium leading-tight">An<br/>d'expérience</div>
               </motion.div>
               {/* Floating badge — projects */}
               <motion.div

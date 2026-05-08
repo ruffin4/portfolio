@@ -1,11 +1,11 @@
 export const profileData = {
   name: "Ruffin Rafanomezantsoa",
   role: "Développeur Web Fullstack | DevOps Engineer",
-  shortDesc: "Je conçois et réalise des plateformes digitales performantes depuis plus de 4 ans, en accompagnant mes clients de l'idée initiale jusqu'à la mise en ligne.",
+  shortDesc: "Je conçois et réalise des plateformes digitales performantes, en accompagnant mes clients de l'idée initiale jusqu'à la mise en ligne.",
   location: "Madagascar — Remote Available",
   availability: "Disponible pour des projets freelance",
   stats: [
-    { label: "Années d'expérience", value: "4+" },
+    { label: "An d'expérience", value: "1" },
     { label: "Projets livrés", value: "50+" },
     { label: "Technologies maîtrisées", value: "25+" },
     { label: "Clients satisfaits", value: "30+" },

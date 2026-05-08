@@ -30,7 +30,7 @@ export function About() {
             className="space-y-6"
           >
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Développeur Web Fullstack basé à Madagascar, je conçois et réalise des plateformes digitales sur mesure depuis plus de 4 ans. Fort d'un socle technique solide (Node.js, NestJS, React, TypeScript et autres…), j'accompagne mes clients de l'idée initiale jusqu'à la mise en ligne d'outils performants.
+              Développeur Web Fullstack basé à Madagascar, je conçois et réalise des plateformes digitales sur mesure. Fort d'un socle technique solide (Node.js, NestJS, React, TypeScript et autres…), j'accompagne mes clients de l'idée initiale jusqu'à la mise en ligne d'outils performants.
             </p>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               Mon approche est centrée sur le résultat et l'expérience utilisateur. Qu'il s'agisse d'un site vitrine élégant, d'un e-commerce ou d'une application métier complexe, je mets au point des solutions fiables, rapides et parfaitement adaptées à vos besoins réels.
