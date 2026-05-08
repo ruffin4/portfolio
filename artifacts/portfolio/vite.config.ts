@@ -13,20 +13,17 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [
           runtimeErrorOverlay(),
-
           await import("@replit/vite-plugin-cartographer").then((m) =>
             m.cartographer({
               root: path.resolve(import.meta.dirname, ".."),
-            }),
+            })
           ),
-
           await import("@replit/vite-plugin-dev-banner").then((m) =>
-            m.devBanner(),
+            m.devBanner()
           ),
         ]
       : []),
@@ -35,32 +32,34 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "src"),
-
-      "@assets": path.resolve(import.meta.dirname, "src/assets/images"),
+      "@assets": path.resolve(
+        import.meta.dirname,
+        "..",
+        "..",
+        "attached_assets"
+      ),
     },
-
     dedupe: ["react", "react-dom"],
   },
 
   root: path.resolve(import.meta.dirname),
 
+  // ✅ ICI TU AJOUTES / REMPLACES BUILD
   build: {
     sourcemap: false,
+    chunkSizeWarningLimit: 2000,
+    target: "esnext",
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
-    target: "esnext",
   },
 
   server: {
     port,
-    strictPort: false,
+    strictPort: true,
     host: "0.0.0.0",
-
     allowedHosts: true,
-
     fs: {
       strict: true,
-
       allow: [path.resolve(import.meta.dirname, "..", "..")],
     },
   },
