@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { SiGithub, SiMaildotru } from 'react-icons/si';
 import { Linkedin, Download, ArrowRight } from 'lucide-react';
@@ -37,14 +37,6 @@ export function Hero() {
   const { t } = useLang();
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
-      setCurrent((prev) => (prev + 1) % photos.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, []);
 
   const goTo = (idx: number) => {
     setDirection(idx > current ? 1 : -1);
