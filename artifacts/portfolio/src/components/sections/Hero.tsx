@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { SiGithub, SiMaildotru } from 'react-icons/si';
 import { Linkedin, Download, ArrowRight } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
-import profileMain from '@assets/image1_1778226703318.png';
+import profileMain from '@assets/image1_no_bg.png';
 
 export function Hero() {
   return (
