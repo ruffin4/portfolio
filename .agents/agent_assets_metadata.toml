@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "lPmmhRzYsHjZODJOX0kIV"
+uri = "file://artifacts/portfolio/public/images/project-payroll.png"
+type = "image"
+title = "Payroll Management System App"
+
+[[generated]]
+id = "2RRruQhvGDW6IBeNhZxte"
+uri = "file://artifacts/portfolio/public/images/project-saas.png"
+type = "image"
+title = "SaaS Dashboard Platform"
+
+[[generated]]
+id = "TALfQ-f4PEbYQrh-fVnuk"
+uri = "file://artifacts/portfolio/public/images/project-ecommerce.png"
+type = "image"
+title = "Ecommerce Application"
+
+[[generated]]
+id = "6Mq9Ao41hyRJuW5c6PiaK"
+uri = "file://artifacts/portfolio/public/images/project-api.png"
+type = "image"
+title = "Dockerized REST API"
+
+[[generated]]
+id = "qOsfz2Raw74PtS0XqLRYL"
+uri = "file://artifacts/portfolio/public/images/project-finance.png"
+type = "image"
+title = "Finance Management App"

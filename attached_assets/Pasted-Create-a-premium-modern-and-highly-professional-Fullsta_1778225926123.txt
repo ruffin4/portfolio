@@ -1,0 +1,415 @@
+Create a premium, modern and highly professional Fullstack Developer portfolio website using Next.js 16, TypeScript, Tailwind CSS, Framer Motion and shadcn/ui.
+
+The portfolio must represent a Senior Fullstack JavaScript/TypeScript Engineer with strong DevOps skills.
+
+The UI must feel luxurious, immersive, modern, minimal and highly interactive, inspired by Apple, Linear, Vercel and top-tier developer portfolios.
+
+==================================================
+MAIN PROFILE
+==================================================
+
+Name:
+Ruffin Rafanomezantsoa
+
+Role:
+Fullstack JavaScript & TypeScript Developer | DevOps Engineer
+
+Short description:
+"I build scalable, high-performance and modern web applications with JavaScript, TypeScript, cloud infrastructure and DevOps practices."
+
+Location:
+Madagascar
+
+Availability:
+Available for freelance and remote opportunities
+
+==================================================
+TECH STACK
+==================================================
+
+Frontend:
+- React.js
+- Next.js
+- TypeScript
+- JavaScript
+- Tailwind CSS
+- Framer Motion
+- Redux Toolkit
+
+Backend:
+- Node.js
+- NestJS
+- Express.js
+- REST API
+- JWT Authentication
+- WebSocket
+
+Database:
+- PostgreSQL
+- MySQL
+- Prisma ORM
+- Redis
+
+DevOps & Infrastructure:
+- Docker
+- Docker Compose
+- Linux Ubuntu
+- Nginx
+- GitHub Actions
+- CI/CD
+- VPS Deployment
+- PM2
+- Reverse Proxy
+- SSL Configuration
+
+Tools:
+- Git
+- GitHub
+- VS Code
+- Figma
+- Postman
+
+==================================================
+DESIGN STYLE
+==================================================
+
+- Dark premium UI
+- Black / dark navy gradient background
+- Glassmorphism cards
+- Soft neon effects
+- Animated gradients
+- Smooth transitions
+- Floating elements
+- Premium typography
+- Bento grid layouts
+- Elegant spacing
+- Interactive hover effects
+- Minimal but luxurious aesthetic
+- Professional software engineer branding
+
+==================================================
+NAVBAR
+==================================================
+
+Sticky transparent navbar with blur effect.
+
+Logo:
+"Ruffin"
+
+Navigation:
+- About
+- Skills
+- Projects
+- Services
+- DevOps
+- Blog
+- Contact
+
+CTA Button:
+"Download CV"
+
+==================================================
+HERO SECTION
+==================================================
+
+Large premium hero section with animated background.
+
+Include:
+- Professional profile image
+- Animated particles
+- Floating tech stack icons
+- Availability badge
+
+Main title:
+"Fullstack JavaScript & TypeScript Developer"
+
+Subtitle:
+"Building scalable applications, APIs and cloud-ready infrastructures."
+
+Description:
+"I design and develop modern fullstack applications with Next.js, NestJS, PostgreSQL and DevOps technologies like Docker and CI/CD."
+
+Buttons:
+- Download CV
+- Contact Me
+- View Projects
+
+Social links:
+- GitHub
+- LinkedIn
+- Email
+
+==================================================
+ABOUT SECTION
+==================================================
+
+Professional presentation section with:
+- Large typography
+- Timeline experience
+- Animated counters
+- Career highlights
+
+Statistics:
+- 4+ Years Experience
+- 50+ Projects Completed
+- 25+ Technologies
+- 30+ Happy Clients
+
+Description must emphasize:
+- Fullstack architecture
+- Backend engineering
+- DevOps automation
+- Performance optimization
+- Clean code
+- Scalable systems
+- API security
+- Software engineering mindset
+
+==================================================
+SKILLS SECTION
+==================================================
+
+Create animated skill categories.
+
+Frontend:
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Redux
+
+Backend:
+- Node.js
+- NestJS
+- Express.js
+- REST API
+- Authentication
+
+Database:
+- PostgreSQL
+- MySQL
+- Prisma
+- Redis
+
+DevOps:
+- Docker
+- Docker Compose
+- Linux
+- Nginx
+- GitHub Actions
+- CI/CD
+- VPS
+- PM2
+
+Tools:
+- Git
+- GitHub
+- Postman
+- VS Code
+- Figma
+
+Each skill card must have:
+- Icon/logo
+- Hover animations
+- Glow effects
+- Smooth transitions
+
+==================================================
+SERVICES SECTION
+==================================================
+
+Modern animated cards.
+
+Services:
+- Fullstack Web Development
+- API Development
+- SaaS Application Development
+- Backend Architecture
+- DevOps & Deployment
+- Docker Infrastructure
+- CI/CD Setup
+- Performance Optimization
+
+==================================================
+DEVOPS SECTION
+==================================================
+
+Create a dedicated DevOps showcase section.
+
+Include:
+- Dockerized architectures
+- CI/CD pipelines
+- VPS deployment workflows
+- Nginx reverse proxy setup
+- Linux server administration
+- GitHub Actions automation
+- SSL and security configuration
+
+Add:
+- Infrastructure diagrams
+- Animated workflow cards
+- Terminal-style UI blocks
+
+==================================================
+PROJECTS SECTION
+==================================================
+
+Create premium project showcase cards.
+
+Projects:
+1. Payroll Management System
+2. SaaS Dashboard Platform
+3. E-commerce Application
+4. Dockerized REST API
+5. Finance Management App
+
+Each card must contain:
+- Large preview image
+- Tech stack badges
+- Description
+- GitHub button
+- Live demo button
+- Status badge
+
+Use:
+- Bento grid layout
+- Smooth hover effects
+- Animated cards
+- Modern showcase UI
+
+==================================================
+BLOG SECTION
+==================================================
+
+Professional blog section with modern cards.
+
+Topics:
+- Next.js Architecture
+- NestJS Best Practices
+- Docker Deployment
+- PostgreSQL Optimization
+- CI/CD Workflows
+- DevOps Automation
+- Clean Architecture
+
+==================================================
+TESTIMONIALS SECTION
+==================================================
+
+Animated testimonial carousel.
+
+Include:
+- Client avatar
+- Name
+- Company
+- Review
+- Smooth transitions
+
+==================================================
+CONTACT SECTION
+==================================================
+
+Professional contact form with:
+- Name
+- Email
+- Subject
+- Message
+
+Features:
+- React Hook Form
+- Zod validation
+- Animated inputs
+- Loading states
+- Success animation
+
+Contact information:
+- Madagascar
+- Remote Available
+- GitHub
+- LinkedIn
+- Professional email
+
+==================================================
+FOOTER
+==================================================
+
+Minimal premium footer:
+- Logo
+- Navigation links
+- Social icons
+- Copyright
+- Smooth hover effects
+
+==================================================
+ANIMATIONS
+==================================================
+
+Use Framer Motion everywhere:
+- Fade animations
+- Slide-up transitions
+- Stagger animations
+- Hover scaling
+- Floating effects
+- Smooth page transitions
+- Scroll animations
+
+==================================================
+EXTRA FEATURES
+==================================================
+
+Add:
+- Dark mode toggle
+- Scroll progress bar
+- Animated cursor
+- Smooth scrolling
+- SEO optimization
+- Loading skeletons
+- Mobile responsive menu
+- Performance optimization
+- Lazy loading
+- Dynamic metadata
+
+==================================================
+ARCHITECTURE
+==================================================
+
+Use clean and scalable architecture.
+
+Folder structure:
+
+src/
+  app/
+  components/
+    ui/
+    layout/
+    sections/
+    cards/
+  features/
+  hooks/
+  services/
+  lib/
+  types/
+  data/
+  styles/
+
+==================================================
+FINAL RESULT
+==================================================
+
+The final portfolio must look like a premium senior Fullstack JavaScript/TypeScript engineer portfolio with DevOps expertise.
+
+The website should impress:
+- International clients
+- Startups
+- Tech companies
+- Freelance clients
+- Remote recruiters
+
+The result must feel:
+- Premium
+- Modern
+- Scalable
+- High-tech
+- Interactive
+- Luxurious
+- Enterprise-grade
