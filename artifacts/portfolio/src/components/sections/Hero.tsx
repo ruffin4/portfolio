@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { SiGithub, SiMaildotru } from 'react-icons/si';
+import { SiGithub, SiWhatsapp, SiFacebook } from 'react-icons/si';
 import { Linkedin, Download, ArrowRight } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
 import { useLang } from '@/lib/i18n';
@@ -120,10 +120,20 @@ export function Hero() {
                 <Linkedin size={20} />
               </a>
               <a
-                href={`mailto:${profileData.socials.email}`}
-                className="text-muted-foreground hover:text-primary transition-colors p-2 glass-card rounded-xl border-white/5 hover:border-primary/30"
+                href={profileData.socials.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-[#25D366] transition-colors p-2 glass-card rounded-xl border-white/5 hover:border-[#25D366]/30"
               >
-                <SiMaildotru size={20} />
+                <SiWhatsapp size={20} />
+              </a>
+              <a
+                href={profileData.socials.facebook}
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted-foreground hover:text-[#1877F2] transition-colors p-2 glass-card rounded-xl border-white/5 hover:border-[#1877F2]/30"
+              >
+                <SiFacebook size={20} />
               </a>
             </motion.div>
           </div>

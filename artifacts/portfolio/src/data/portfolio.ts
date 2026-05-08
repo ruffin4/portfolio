@@ -15,6 +15,8 @@ export const profileData = {
     linkedin: "https://linkedin.com",
     email: "hello@ruffin.dev",
     phone: "+261 34 00 000 00",
+    whatsapp: "https://wa.me/261340000000",
+    facebook: "https://facebook.com",
   }
 };
 
