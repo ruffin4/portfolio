@@ -1,6 +1,7 @@
 {
+  "version": 2,
   "buildCommand": "pnpm --filter @workspace/portfolio build",
-  "outputDirectory": "artifacts/portfolio/dist",
+  "outputDirectory": "./artifacts/portfolio/dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
