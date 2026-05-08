@@ -1,101 +1,102 @@
 import { motion } from 'framer-motion';
 import { profileData } from '@/data/portfolio';
-import profileAbout from '@assets/image4_1778226703318.png';
+import { ArrowRight } from 'lucide-react';
 
 export function About() {
   return (
     <section id="about" className="py-24 md:py-32 relative">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-14"
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-primary rounded-full" />
+          <p className="text-xs font-semibold tracking-widest text-primary uppercase mb-4">
+            01 &nbsp;·&nbsp; Qui je suis
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">À propos de moi</h2>
+          <div className="w-12 h-[3px] bg-primary rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Photo column */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          {/* Left: text + button */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="flex justify-center lg:justify-start"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="space-y-6"
           >
-            <div className="relative">
-              {/* Glow */}
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 via-cyan-500/15 to-violet-500/20 blur-2xl scale-105" />
-              {/* Border gradient */}
-              <div className="relative p-[2px] rounded-3xl bg-gradient-to-br from-primary/50 via-cyan-400/20 to-violet-500/40">
-                <div className="relative overflow-hidden rounded-[22px] bg-background/50">
-                  <img
-                    src={profileAbout}
-                    alt="Ruffin Rafanomezantsoa"
-                    data-testid="img-profile-about"
-                    className="w-full max-w-xs lg:max-w-sm h-auto object-cover object-top"
-                    style={{ aspectRatio: '3/4', maxHeight: '440px', objectFit: 'cover' }}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background/50 to-transparent" />
-                </div>
-              </div>
-              {/* Location badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass-card border-white/10 px-5 py-2 rounded-full shadow-xl whitespace-nowrap"
-              >
-                <span className="text-sm font-medium text-muted-foreground">Madagascar &mdash; Remote Available</span>
-              </motion.div>
-            </div>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Développeur Web Fullstack basé à Madagascar, je conçois et réalise des plateformes digitales sur mesure depuis plus de 4 ans. Fort d'un socle technique solide (Node.js, NestJS, React, TypeScript et autres…), j'accompagne mes clients de l'idée initiale jusqu'à la mise en ligne d'outils performants.
+            </p>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+              Mon approche est centrée sur le résultat et l'expérience utilisateur. Qu'il s'agisse d'un site vitrine élégant, d'un e-commerce ou d'une application métier complexe, je mets au point des solutions fiables, rapides et parfaitement adaptées à vos besoins réels.
+            </p>
+
+            <motion.a
+              href="#contact"
+              whileHover={{ x: 4 }}
+              className="inline-flex items-center gap-2 mt-4 px-6 py-3 rounded-lg border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors duration-200"
+            >
+              En savoir plus sur mon parcours <ArrowRight size={16} />
+            </motion.a>
           </motion.div>
 
-          {/* Text + stats column */}
-          <div className="space-y-10">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-5 text-base md:text-lg text-muted-foreground"
-            >
-              <p>
-                I am a Senior Fullstack Engineer obsessed with building highly scalable, performant, and resilient applications. I bridge the gap between elegant frontend interfaces and robust backend architectures.
-              </p>
-              <p>
-                My expertise spans the entire software lifecycle — from conceptualizing database schemas and writing clean TypeScript code, to containerizing applications with Docker and establishing automated CI/CD pipelines.
-              </p>
-              <p>
-                I don&apos;t just write code; I design systems. Whether it&apos;s optimizing a React application for Core Web Vitals, migrating a monolith to NestJS microservices, or configuring an Nginx reverse proxy on a Linux VPS, I ensure every layer of the stack is purposeful and efficient.
-              </p>
-            </motion.div>
-
-            {/* Stats grid */}
+          {/* Right: stats grid + CTA card */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6"
+          >
+            {/* 2x2 stats grid */}
             <div className="grid grid-cols-2 gap-4">
               {profileData.stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  className="glass-card p-5 rounded-2xl border-white/5 flex flex-col items-center justify-center text-center"
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
+                  className="rounded-xl border border-white/8 bg-white/3 p-6 flex flex-col gap-1"
                 >
-                  <div className="text-3xl md:text-4xl font-display font-bold text-gradient mb-1">
+                  <span className="text-3xl md:text-4xl font-bold text-primary">
                     {stat.value}
-                  </div>
-                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  </span>
+                  <span className="text-sm text-muted-foreground">
                     {stat.label}
-                  </div>
+                  </span>
                 </motion.div>
               ))}
             </div>
-          </div>
+
+            {/* CTA card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="rounded-xl border border-white/8 bg-white/3 p-6 space-y-3"
+            >
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
+                <p className="font-semibold text-foreground">Un projet en tête ?</p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Je suis actuellement ouvert à de nouveaux projets stimulants, que ce soit en freelance pour construire l'architecture de votre app, ou pour une plateforme ou autres !
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-primary uppercase hover:underline"
+              >
+                Lancer une discussion <ArrowRight size={12} />
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

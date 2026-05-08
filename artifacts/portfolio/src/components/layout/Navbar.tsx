@@ -5,12 +5,10 @@ import { Button } from '@/components/ui/button';
 import { useTheme } from '@/components/ui/theme-provider';
 
 const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'À propos', href: '#about' },
+  { name: 'Compétences', href: '#skills' },
+  { name: 'Projets', href: '#projects' },
   { name: 'Services', href: '#services' },
-  { name: 'DevOps', href: '#devops' },
-  { name: 'Blog', href: '#blog' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -64,7 +62,7 @@ export function Navbar() {
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <Button variant="default" size="sm" className="rounded-full font-medium">
-              Download CV
+              Télécharger CV
             </Button>
           </div>
         </nav>
@@ -107,7 +105,7 @@ export function Navbar() {
                 </a>
               ))}
               <Button className="mt-4 w-full rounded-full">
-                Download CV
+                Télécharger CV
               </Button>
             </div>
           </motion.div>
