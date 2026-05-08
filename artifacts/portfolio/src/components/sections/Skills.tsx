@@ -7,13 +7,31 @@ const SkillCard = ({ name, icon, color }: { name: string; icon: string; color: s
   // @ts-ignore
   const Icon = Icons[icon] || Icons.SiReact;
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-white/8 bg-white/3 px-4 py-3 hover:border-primary/30 transition-colors duration-200">
-      <div className="shrink-0 w-8 h-8 flex items-center justify-center">
+    <motion.div
+      whileHover={{ scale: 1.04, x: 5 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+      className="flex items-center gap-3 rounded-lg border border-white/8 bg-white/3 px-4 py-3 hover:border-primary/40 hover:bg-primary/5 transition-colors duration-200 cursor-default"
+    >
+      <motion.div
+        whileHover={{ rotate: 12, scale: 1.2 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+        className="shrink-0 w-8 h-8 flex items-center justify-center"
+      >
         <Icon style={{ color, fontSize: 24 }} />
-      </div>
+      </motion.div>
       <span className="text-sm font-medium text-foreground">{name}</span>
-    </div>
+    </motion.div>
   );
+};
+
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07 } },
+};
+
+const itemAnim = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
 export function Skills() {
@@ -33,7 +51,7 @@ export function Skills() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
@@ -41,7 +59,13 @@ export function Skills() {
             {t.skills.tag}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.skills.title}</h2>
-          <div className="w-12 h-[3px] bg-primary rounded-full" />
+          <motion.div
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="w-12 h-[3px] bg-primary rounded-full"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -49,15 +73,25 @@ export function Skills() {
             {left.map((cat, ci) => (
               <motion.div
                 key={cat.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: ci * 0.1 }}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-50px' }}
+                variants={container}
+                transition={{ delay: ci * 0.1 }}
                 className="space-y-4"
               >
-                <h3 className="text-lg font-semibold text-foreground">{cat.title}</h3>
+                <motion.h3
+                  variants={itemAnim}
+                  className="text-lg font-semibold text-foreground"
+                >
+                  {cat.title}
+                </motion.h3>
                 <div className="grid grid-cols-2 gap-3">
-                  {cat.items.map(skill => <SkillCard key={skill.name} {...skill} />)}
+                  {cat.items.map(skill => (
+                    <motion.div key={skill.name} variants={itemAnim}>
+                      <SkillCard {...skill} />
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             ))}
@@ -67,35 +101,48 @@ export function Skills() {
             {right.map((cat, ci) => (
               <motion.div
                 key={cat.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: 0.2 + ci * 0.1 }}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: '-50px' }}
+                variants={container}
+                transition={{ delay: 0.15 + ci * 0.1 }}
                 className="space-y-4"
               >
-                <h3 className="text-lg font-semibold text-foreground">{cat.title}</h3>
+                <motion.h3
+                  variants={itemAnim}
+                  className="text-lg font-semibold text-foreground"
+                >
+                  {cat.title}
+                </motion.h3>
                 <div className="grid grid-cols-2 gap-3">
-                  {cat.items.map(skill => <SkillCard key={skill.name} {...skill} />)}
+                  {cat.items.map(skill => (
+                    <motion.div key={skill.name} variants={itemAnim}>
+                      <SkillCard {...skill} />
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
+        {/* Tags with stagger */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04, delayChildren: 0.2 } } }}
           className="mt-16 flex flex-wrap gap-2"
         >
           {skillTags.map(tag => (
-            <span
+            <motion.span
               key={tag}
-              className="px-3 py-1 rounded-full text-xs font-medium border border-white/10 bg-white/3 text-muted-foreground tracking-wide"
+              variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1 } }}
+              whileHover={{ scale: 1.08, borderColor: '#05D3F8' }}
+              className="px-3 py-1 rounded-full text-xs font-medium border border-white/10 bg-white/3 text-muted-foreground tracking-wide cursor-default transition-colors"
             >
               {tag}
-            </span>
+            </motion.span>
           ))}
         </motion.div>
       </div>

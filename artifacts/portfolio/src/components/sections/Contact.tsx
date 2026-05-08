@@ -1,8 +1,17 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Globe, Github, Linkedin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Globe, Github, Linkedin, ArrowRight, CheckCircle } from 'lucide-react';
 import { profileData } from '@/data/portfolio';
 import { useLang } from '@/lib/i18n';
+
+const infoAnim = {
+  hidden: { opacity: 0, x: -16 },
+  show: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: { delay: i * 0.1, duration: 0.5 },
+  }),
+};
 
 export function Contact() {
   const { t } = useLang();
@@ -20,13 +29,21 @@ export function Contact() {
     setTimeout(() => setSent(false), 5000);
   }
 
+  const infoItems = [
+    { icon: Mail, label: 'Email', value: profileData.socials.email },
+    { icon: Phone, label: t.contact.phone, value: profileData.socials.phone },
+    { icon: MapPin, label: t.contact.location, value: profileData.location },
+    { icon: Clock, label: '', value: t.contact.responseTime },
+    { icon: Globe, label: '', value: t.contact.remote },
+  ];
+
   return (
     <section id="contact" className="py-24 md:py-32 relative">
       <div className="container mx-auto px-6 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
@@ -34,7 +51,13 @@ export function Contact() {
             {t.contact.tag}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.contact.title}</h2>
-          <div className="w-12 h-[3px] bg-primary rounded-full" />
+          <motion.div
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="w-12 h-[3px] bg-primary rounded-full"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
@@ -49,69 +72,59 @@ export function Contact() {
             <h3 className="text-xl font-semibold text-foreground">{t.contact.infoTitle}</h3>
 
             <div className="space-y-5">
-              <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5">
-                  <Mail size={16} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">Email</p>
-                  <p className="text-sm text-foreground">{profileData.socials.email}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5">
-                  <Phone size={16} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">{t.contact.phone}</p>
-                  <p className="text-sm text-foreground">{profileData.socials.phone}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5">
-                  <MapPin size={16} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">{t.contact.location}</p>
-                  <p className="text-sm text-foreground">{profileData.location}</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <Clock size={16} />
-                </div>
-                <p className="text-sm text-foreground">{t.contact.responseTime}</p>
-              </div>
-
-              <div className="flex items-center gap-4">
-                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <Globe size={16} />
-                </div>
-                <p className="text-sm text-foreground">{t.contact.remote}</p>
-              </div>
+              {infoItems.map((item, i) => (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={infoAnim}
+                  whileHover={{ x: 4 }}
+                  className="flex items-start gap-4 cursor-default"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.15, backgroundColor: 'rgba(5,211,248,0.2)' }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5 transition-colors"
+                  >
+                    <item.icon size={16} />
+                  </motion.div>
+                  <div>
+                    {item.label && (
+                      <p className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase mb-0.5">{item.label}</p>
+                    )}
+                    <p className="text-sm text-foreground">{item.value}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-            <div className="flex gap-3 pt-2">
-              <a
-                href={profileData.socials.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors"
-              >
-                <Github size={15} /> Github
-              </a>
-              <a
-                href={profileData.socials.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors"
-              >
-                <Linkedin size={15} /> LinkedIn
-              </a>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+              className="flex gap-3 pt-2"
+            >
+              {[
+                { href: profileData.socials.github, icon: Github, label: 'Github' },
+                { href: profileData.socials.linkedin, icon: Linkedin, label: 'LinkedIn' },
+              ].map(({ href, icon: Icon, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  whileHover={{ y: -3, scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                >
+                  <Icon size={15} /> {label}
+                </motion.a>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* Right: form */}
@@ -124,45 +137,59 @@ export function Contact() {
           >
             <div className="rounded-xl border border-white/8 bg-white/3 p-8">
               {sent ? (
-                <div className="flex flex-col items-center justify-center py-12 gap-4 text-center">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-                    <ArrowRight size={20} />
-                  </div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="flex flex-col items-center justify-center py-12 gap-4 text-center"
+                >
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ repeat: 2, duration: 0.4 }}
+                    className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary"
+                  >
+                    <CheckCircle size={24} />
+                  </motion.div>
                   <p className="text-lg font-semibold text-foreground">{t.contact.sentTitle}</p>
                   <p className="text-sm text-muted-foreground">{t.contact.sentDesc}</p>
-                </div>
+                </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                        {t.contact.nameFull}
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
-                        {t.contact.email}
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors"
-                      />
-                    </div>
+                    {[
+                      { label: t.contact.nameFull, name: 'name', type: 'text' },
+                      { label: t.contact.email, name: 'email', type: 'email' },
+                    ].map(({ label, name, type }, i) => (
+                      <motion.div
+                        key={name}
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 + i * 0.06 }}
+                        className="space-y-1.5"
+                      >
+                        <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                          {label}
+                        </label>
+                        <input
+                          type={type}
+                          name={name}
+                          value={(form as any)[name]}
+                          onChange={handleChange}
+                          required
+                          className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200"
+                        />
+                      </motion.div>
+                    ))}
                   </div>
 
-                  <div className="space-y-1.5">
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.22 }}
+                    className="space-y-1.5"
+                  >
                     <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
                       {t.contact.subject}
                     </label>
@@ -178,9 +205,15 @@ export function Contact() {
                         <option key={s} value={s}>{s}</option>
                       ))}
                     </select>
-                  </div>
+                  </motion.div>
 
-                  <div className="space-y-1.5">
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.28 }}
+                    className="space-y-1.5"
+                  >
                     <label className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
                       {t.contact.message}
                     </label>
@@ -191,16 +224,19 @@ export function Contact() {
                       required
                       rows={6}
                       placeholder={t.contact.messagePlaceholder}
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors resize-none"
+                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200 resize-none"
                     />
-                  </div>
+                  </motion.div>
 
-                  <button
+                  <motion.button
                     type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: 'spring', stiffness: 400 }}
                     className="w-full rounded-lg bg-primary text-background font-semibold py-3 text-sm hover:opacity-90 transition-opacity"
                   >
                     {t.contact.send}
-                  </button>
+                  </motion.button>
                 </form>
               )}
             </div>

@@ -20,7 +20,7 @@ export function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
@@ -28,16 +28,23 @@ export function Projects() {
             {t.projects.tag}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.projects.title}</h2>
-          <div className="w-12 h-[3px] bg-primary rounded-full" />
+          <motion.div
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="w-12 h-[3px] bg-primary rounded-full"
+          />
         </motion.div>
 
         {featured && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7 }}
-            className="relative rounded-xl border border-white/8 bg-white/3 overflow-hidden mb-8"
+            whileHover={{ y: -6 }}
+            className="relative rounded-xl border border-white/8 bg-white/3 overflow-hidden mb-8 hover:border-primary/30 hover:shadow-[0_0_40px_rgba(5,211,248,0.08)] transition-all duration-300"
           >
             <div className="absolute top-4 right-4 z-10">
               <span className="px-3 py-1 rounded text-xs font-bold tracking-widest bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase">
@@ -56,16 +63,38 @@ export function Projects() {
               <h3 className="text-2xl font-bold text-foreground mb-3">{featured.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-3xl">{featured.description}</p>
               <div className="flex flex-wrap gap-2 items-center justify-between">
-                <div className="flex flex-wrap gap-2">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
+                  className="flex flex-wrap gap-2"
+                >
                   {featured.tech.map(tech => (
-                    <span key={tech} className="px-3 py-1 rounded text-xs font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide">
+                    <motion.span
+                      key={tech}
+                      variants={{ hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } }}
+                      className="px-3 py-1 rounded text-xs font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide"
+                    >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
                 <div className="flex gap-3 text-muted-foreground">
-                  <a href={featured.github} className="hover:text-primary transition-colors"><Github size={18} /></a>
-                  <a href={featured.live} className="hover:text-primary transition-colors"><ExternalLink size={18} /></a>
+                  <motion.a
+                    href={featured.github}
+                    whileHover={{ scale: 1.2, color: '#05D3F8' }}
+                    className="hover:text-primary transition-colors"
+                  >
+                    <Github size={18} />
+                  </motion.a>
+                  <motion.a
+                    href={featured.live}
+                    whileHover={{ scale: 1.2, color: '#05D3F8' }}
+                    className="hover:text-primary transition-colors"
+                  >
+                    <ExternalLink size={18} />
+                  </motion.a>
                 </div>
               </div>
             </div>
@@ -78,29 +107,43 @@ export function Projects() {
               key={project.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-xl border border-white/8 bg-white/3 overflow-hidden hover:border-primary/25 transition-colors duration-300"
+              whileHover={{ y: -8, scale: 1.01 }}
+              className="group relative rounded-xl border border-white/8 bg-white/3 overflow-hidden hover:border-primary/30 hover:shadow-[0_8px_32px_rgba(5,211,248,0.08)] transition-all duration-300"
             >
               <div className="absolute top-3 right-3 z-10">
                 <span className="px-2 py-0.5 rounded text-[10px] font-bold tracking-widest bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase">
                   {project.status}
                 </span>
               </div>
-              <div className="relative w-full aspect-video bg-black/40 flex items-center justify-center">
+              <div className="relative w-full aspect-video bg-black/40 flex items-center justify-center overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                />
                 <span className="text-muted-foreground/20 text-xs">{t.projects.preview}</span>
               </div>
               <div className="p-5">
                 <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">{project.category}</p>
-                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-200">{project.title}</h3>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-4 line-clamp-2">{project.description}</p>
-                <div className="flex flex-wrap gap-1.5">
+                <motion.div
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true }}
+                  variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
+                  className="flex flex-wrap gap-1.5"
+                >
                   {project.tech.map(tech => (
-                    <span key={tech} className="px-2 py-0.5 rounded text-[10px] font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide">
+                    <motion.span
+                      key={tech}
+                      variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1 } }}
+                      className="px-2 py-0.5 rounded text-[10px] font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide"
+                    >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}

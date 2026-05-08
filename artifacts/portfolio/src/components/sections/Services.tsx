@@ -13,7 +13,7 @@ export function Services() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
@@ -21,7 +21,13 @@ export function Services() {
             {t.services.tag}
           </p>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-5">{t.services.title}</h2>
-          <div className="w-12 h-[3px] bg-primary rounded-full" />
+          <motion.div
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="w-12 h-[3px] bg-primary rounded-full"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -32,23 +38,32 @@ export function Services() {
                 key={service.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="group rounded-xl border border-white/8 bg-white/3 p-8 flex flex-col gap-4 hover:border-primary/25 transition-colors duration-300"
+                whileHover={{ y: -8 }}
+                className="group rounded-xl border border-white/8 bg-white/3 p-8 flex flex-col gap-4 hover:border-primary/30 hover:shadow-[0_8px_32px_rgba(5,211,248,0.07)] transition-all duration-300"
               >
-                <div className="text-primary">
+                <motion.div
+                  whileHover={{ scale: 1.25, rotate: -8 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                  className="text-primary w-fit"
+                >
                   <Icon size={30} strokeWidth={1.5} />
-                </div>
+                </motion.div>
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
+                  <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-200">
+                    {service.title}
+                  </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
-                <a
+                <motion.a
                   href="#contact"
-                  className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-auto group-hover:gap-2.5 transition-all duration-200"
+                  whileHover={{ x: 4 }}
+                  transition={{ type: 'spring', stiffness: 400 }}
+                  className="inline-flex items-center gap-1.5 text-sm text-primary font-medium mt-auto"
                 >
                   {t.services.learnMore} <ArrowRight size={14} />
-                </a>
+                </motion.a>
               </motion.div>
             );
           })}
