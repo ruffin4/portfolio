@@ -1,16 +1,8 @@
 import { motion } from 'framer-motion';
-import { services } from '@/data/portfolio';
 import { Globe, Layers, Database, Wrench, Zap, Shield, ArrowRight } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 
-const iconMap: Record<string, React.ElementType> = {
-  Globe,
-  Layers,
-  Database,
-  Wrench,
-  Zap,
-  Shield,
-};
+const iconMap: Record<string, React.ElementType> = { Globe, Layers, Database, Wrench, Zap, Shield };
 
 export function Services() {
   const { t } = useLang();
@@ -33,9 +25,8 @@ export function Services() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service, index) => {
+          {t.services.items.map((service, index) => {
             const Icon = iconMap[service.icon] || Globe;
-
             return (
               <motion.div
                 key={service.title}
@@ -50,9 +41,7 @@ export function Services() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
                 </div>
                 <a
                   href="#contact"

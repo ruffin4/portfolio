@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { testimonials } from '@/data/portfolio';
 import { Quote } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 
@@ -22,7 +21,7 @@ export function Testimonials() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {t.testimonials.items.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
               initial={{ opacity: 0, y: 20 }}
@@ -32,7 +31,6 @@ export function Testimonials() {
               className="glass-card p-8 rounded-2xl relative"
             >
               <Quote className="absolute top-6 right-6 w-12 h-12 text-primary/10" />
-
               <div className="mb-6 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-display font-bold text-xl">
                   {testimonial.name.charAt(0)}
@@ -42,10 +40,7 @@ export function Testimonials() {
                   <p className="text-sm text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>
-
-              <p className="text-muted-foreground leading-relaxed italic">
-                "{testimonial.text}"
-              </p>
+              <p className="text-muted-foreground leading-relaxed italic">"{testimonial.text}"</p>
             </motion.div>
           ))}
         </div>

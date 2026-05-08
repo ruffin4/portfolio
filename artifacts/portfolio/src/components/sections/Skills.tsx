@@ -6,7 +6,6 @@ import { useLang } from '@/lib/i18n';
 const SkillCard = ({ name, icon, color }: { name: string; icon: string; color: string }) => {
   // @ts-ignore
   const Icon = Icons[icon] || Icons.SiReact;
-
   return (
     <div className="flex items-center gap-3 rounded-lg border border-white/8 bg-white/3 px-4 py-3 hover:border-primary/30 transition-colors duration-200">
       <div className="shrink-0 w-8 h-8 flex items-center justify-center">
@@ -19,8 +18,14 @@ const SkillCard = ({ name, icon, color }: { name: string; icon: string; color: s
 
 export function Skills() {
   const { t } = useLang();
-  const left = skillCategories.slice(0, 2);
-  const right = skillCategories.slice(2, 4);
+
+  const categoriesWithTranslatedTitles = skillCategories.map((cat, i) => ({
+    ...cat,
+    title: t.skills.categories[i] ?? cat.title,
+  }));
+
+  const left = categoriesWithTranslatedTitles.slice(0, 2);
+  const right = categoriesWithTranslatedTitles.slice(2, 4);
 
   return (
     <section id="skills" className="py-24 md:py-32 relative bg-white/[0.015]">
@@ -52,9 +57,7 @@ export function Skills() {
               >
                 <h3 className="text-lg font-semibold text-foreground">{cat.title}</h3>
                 <div className="grid grid-cols-2 gap-3">
-                  {cat.items.map(skill => (
-                    <SkillCard key={skill.name} {...skill} />
-                  ))}
+                  {cat.items.map(skill => <SkillCard key={skill.name} {...skill} />)}
                 </div>
               </motion.div>
             ))}
@@ -72,9 +75,7 @@ export function Skills() {
               >
                 <h3 className="text-lg font-semibold text-foreground">{cat.title}</h3>
                 <div className="grid grid-cols-2 gap-3">
-                  {cat.items.map(skill => (
-                    <SkillCard key={skill.name} {...skill} />
-                  ))}
+                  {cat.items.map(skill => <SkillCard key={skill.name} {...skill} />)}
                 </div>
               </motion.div>
             ))}

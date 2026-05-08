@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { profileData } from '@/data/portfolio';
 import { ArrowRight } from 'lucide-react';
 import { useLang } from '@/lib/i18n';
 
@@ -24,7 +23,6 @@ export function About() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left: text + button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -32,13 +30,8 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="space-y-6"
           >
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              {t.about.p1}
-            </p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              {t.about.p2}
-            </p>
-
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t.about.p1}</p>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">{t.about.p2}</p>
             <motion.a
               href="#contact"
               whileHover={{ x: 4 }}
@@ -48,7 +41,6 @@ export function About() {
             </motion.a>
           </motion.div>
 
-          {/* Right: stats grid + CTA card */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -56,9 +48,8 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            {/* 2x2 stats grid */}
             <div className="grid grid-cols-2 gap-4">
-              {profileData.stats.map((stat, index) => (
+              {t.about.stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 20 }}
@@ -67,17 +58,12 @@ export function About() {
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.08 }}
                   className="rounded-xl border border-white/8 bg-white/3 p-6 flex flex-col gap-1"
                 >
-                  <span className="text-3xl md:text-4xl font-bold text-primary">
-                    {stat.value}
-                  </span>
-                  <span className="text-sm text-muted-foreground">
-                    {stat.label}
-                  </span>
+                  <span className="text-3xl md:text-4xl font-bold text-primary">{stat.value}</span>
+                  <span className="text-sm text-muted-foreground">{stat.label}</span>
                 </motion.div>
               ))}
             </div>
 
-            {/* CTA card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -89,9 +75,7 @@ export function About() {
                 <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
                 <p className="font-semibold text-foreground">{t.about.ctaCard}</p>
               </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {t.about.ctaCardDesc}
-              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t.about.ctaCardDesc}</p>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest text-primary uppercase hover:underline"

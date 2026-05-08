@@ -5,8 +5,14 @@ import { useLang } from '@/lib/i18n';
 
 export function Projects() {
   const { t } = useLang();
-  const featured = projects.find(p => p.featured);
-  const grid = projects.filter(p => !p.featured);
+
+  const mergedProjects = projects.map((p, i) => ({
+    ...p,
+    ...(t.projects.items[i] ?? {}),
+  }));
+
+  const featured = mergedProjects.find(p => p.featured);
+  const grid = mergedProjects.filter(p => !p.featured);
 
   return (
     <section id="projects" className="py-24 md:py-32 relative bg-white/[0.015]">
@@ -38,7 +44,6 @@ export function Projects() {
                 {featured.status}
               </span>
             </div>
-
             <div className="relative w-full bg-black/40" style={{ minHeight: 340 }}>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-[75%] h-[85%] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
@@ -46,23 +51,15 @@ export function Projects() {
                 </div>
               </div>
             </div>
-
             <div className="p-8 border-t border-white/8">
-              <p className="text-xs font-bold tracking-widest text-primary uppercase mb-3">
-                {featured.category}
-              </p>
+              <p className="text-xs font-bold tracking-widest text-primary uppercase mb-3">{featured.category}</p>
               <h3 className="text-2xl font-bold text-foreground mb-3">{featured.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-3xl">
-                {featured.description}
-              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-3xl">{featured.description}</p>
               <div className="flex flex-wrap gap-2 items-center justify-between">
                 <div className="flex flex-wrap gap-2">
-                  {featured.tech.map(t => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 rounded text-xs font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide"
-                    >
-                      {t}
+                  {featured.tech.map(tech => (
+                    <span key={tech} className="px-3 py-1 rounded text-xs font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide">
+                      {tech}
                     </span>
                   ))}
                 </div>
@@ -90,27 +87,16 @@ export function Projects() {
                   {project.status}
                 </span>
               </div>
-
               <div className="relative w-full aspect-video bg-black/40 flex items-center justify-center">
                 <span className="text-muted-foreground/20 text-xs">{t.projects.preview}</span>
               </div>
-
               <div className="p-5">
-                <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">
-                  {project.category}
-                </p>
-                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed mb-4 line-clamp-2">
-                  {project.description}
-                </p>
+                <p className="text-[10px] font-bold tracking-widest text-primary uppercase mb-2">{project.category}</p>
+                <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4 line-clamp-2">{project.description}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map(tech => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 rounded text-[10px] font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide"
-                    >
+                    <span key={tech} className="px-2 py-0.5 rounded text-[10px] font-medium border border-white/10 bg-white/3 text-muted-foreground uppercase tracking-wide">
                       {tech}
                     </span>
                   ))}
