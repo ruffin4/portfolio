@@ -1,7 +1,7 @@
 {
   "buildCommand": "pnpm run build",
-  "outputDirectory": "artifacts/portfolio/dist/public",
+  "outputDirectory": "artifacts/portfolio/dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
