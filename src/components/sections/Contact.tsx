@@ -119,7 +119,7 @@ export function Contact() {
                   whileHover={{ y: -3, scale: 1.04 }}
                   whileTap={{ scale: 0.96 }}
                   transition={{ type: 'spring' as const, stiffness: 400 }}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded border border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded border border-black/10 dark:border-white/15 text-sm font-medium text-foreground hover:border-primary/50 hover:text-primary transition-colors"
                 >
                   <Icon size={15} /> {label}
                 </motion.a>
@@ -135,7 +135,7 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-3"
           >
-            <div className="rounded-xl border border-white/8 bg-white/3 p-8">
+            <div className="glass-card p-8 rounded-xl">
               {sent ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -177,7 +177,7 @@ export function Contact() {
                           value={(form as any)[name]}
                           onChange={handleChange}
                           required
-                          className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200"
+                          className="w-full rounded-lg border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200"
                         />
                       </motion.div>
                     ))}
@@ -198,7 +198,7 @@ export function Contact() {
                       value={form.subject}
                       onChange={handleChange}
                       required
-                      className="w-full rounded-lg border border-white/10 bg-[#13151c] px-4 py-3 text-sm text-foreground focus:outline-none focus:border-primary/50 transition-colors appearance-none cursor-pointer"
+                      className="w-full rounded-lg border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-4 py-3 text-sm text-foreground focus:outline-none focus:border-primary/50 transition-colors appearance-none cursor-pointer"
                     >
                       <option value="" disabled>{t.contact.subjectPlaceholder}</option>
                       {t.contact.subjects.map(s => (
@@ -224,7 +224,7 @@ export function Contact() {
                       required
                       rows={6}
                       placeholder={t.contact.messagePlaceholder}
-                      className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200 resize-none"
+                      className="w-full rounded-lg border border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200 resize-none"
                     />
                   </motion.div>
 

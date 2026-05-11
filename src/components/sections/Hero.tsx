@@ -47,9 +47,9 @@ export function Hero() {
     <section id="hero" className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-20">
       {/* Abstract Background */}
       <div className="absolute inset-0 z-0 bg-background">
-        <div className="absolute top-1/4 left-1/3 w-[32rem] h-[32rem] bg-primary/15 rounded-full blur-[140px] mix-blend-screen" />
-        <div className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-cyan-500/10 rounded-full blur-[140px] mix-blend-screen" />
-        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-violet-500/8 rounded-full blur-[100px] mix-blend-screen" />
+        <div className="absolute top-1/4 left-1/3 w-[32rem] h-[32rem] bg-primary/10 dark:bg-primary/15 rounded-full blur-[140px] mix-blend-multiply dark:mix-blend-screen opacity-50 dark:opacity-100" />
+        <div className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-[140px] mix-blend-multiply dark:mix-blend-screen opacity-50 dark:opacity-100" />
+        <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-violet-500/5 dark:bg-violet-500/8 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen opacity-50 dark:opacity-100" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">

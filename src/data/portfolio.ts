@@ -12,10 +12,10 @@ export const profileData = {
   location: "Madagascar — Remote Available",
   availability: "Disponible pour des projets freelance",
   stats: [
-    { label: "Années d'expérience", value: "2+" },
-    { label: "Projets livrés", value: "15+" },
-    { label: "Technologies maîtrisées", value: "20+" },
-    { label: "Clients satisfaits", value: "10+" },
+    { label: "Années d'expérience", value: "1+" },
+    { label: "Projets livrés", value: "5+" },
+    { label: "Technologies maîtrisées", value: "10+" },
+    { label: "Clients satisfaits", value: "3+" },
   ],
   socials: {
     github: "https://github.com/ruffin4",
@@ -60,8 +60,8 @@ export const skillCategories = [
     items: [
       { name: "PostgreSQL", icon: "SiPostgresql", color: "#336791" },
       { name: "MySQL", icon: "SiMysql", color: "#4479a1" },
-      { name: "Redis", icon: "SiRedis", color: "#dc382d" },
-      { name: "Git / GitHub", icon: "SiGit", color: "#f05032" },
+      { name: "MongoDB", icon: "SiMongodb", color: "#008000" },
+      { name: "Git / GitHub / Gitlab", icon: "SiGit", color: "#f05032" },
     ]
   }
 ];
@@ -93,6 +93,8 @@ export const skills = {
     { name: "MySQL", icon: "SiMysql" },
     { name: "Prisma", icon: "SiPrisma" },
     { name: "Redis", icon: "SiRedis" },
+    { name: "MongoDB", icon: "SiMongodb" }
+
   ],
   devops: [
     { name: "Docker", icon: "SiDocker" },
@@ -101,9 +103,9 @@ export const skills = {
     { name: "GitHub Actions", icon: "SiGithubactions" },
   ],
   tools: [
-    { name: "Git", icon: "SiGit" },
+    { name: "Git / GitHub / Gitlab", icon: "SiGit" },
     { name: "Figma", icon: "SiFigma" },
-    { name: "Postman", icon: "SiPostman" },
+    { name: "Postman", icon: "SiPostman" }
   ]
 };
 
