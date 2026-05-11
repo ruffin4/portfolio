@@ -18,11 +18,11 @@ export const profileData = {
     { label: "Clients satisfaits", value: "10+" },
   ],
   socials: {
-    github: "https://github.com",
+    github: "https://github.com/ruffin4",
     linkedin: "https://linkedin.com",
-    email: "hello@ruffin.dev",
-    phone: "+261 34 00 000 00",
-    whatsapp: "https://wa.me/261388382733",
+    email: "ruffinrafanomezantsoa2@gmail.com",
+    phone: "+261 38 95 396 24",
+    whatsapp: "https://wa.me/+261389539624",
     facebook: "https://facebook.com",
   }
 };

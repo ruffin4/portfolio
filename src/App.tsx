@@ -1,5 +1,7 @@
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ui/theme-provider";
@@ -10,6 +12,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Cursor } from "@/components/layout/Cursor";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
+import { Preloader } from "@/components/layout/Preloader";
 
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -55,14 +58,30 @@ function Router() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Artificial delay to ensure the preloader animation is appreciated
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
       <LanguageProvider>
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
-            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-              <Router />
-            </WouterRouter>
+            <AnimatePresence mode="wait">
+              {loading ? (
+                <Preloader key="preloader" />
+              ) : (
+                <WouterRouter key="router" base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+                  <Router />
+                </WouterRouter>
+              )}
+            </AnimatePresence>
             <Toaster />
           </TooltipProvider>
         </QueryClientProvider>
